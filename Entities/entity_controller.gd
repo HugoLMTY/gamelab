@@ -12,11 +12,11 @@ var impulseVelocity := Vector2(0, 0)
 
 var stunned := false
 var stunDuration := 0.5
-var stunDebounce := Timer.new()
+var stunTimer := Timer.new()
 
 func _ready() -> void:
-	add_child(stunDebounce)
-	stunDebounce.timeout.connect(func () -> void: stunned = false)
+	add_child(stunTimer)
+	stunTimer.timeout.connect(func () -> void: stunned = false)
 
 func moveTo(targetDirection: Vector2, delta: float) -> void:
 	var inputDirection = targetDirection.normalized() if targetDirection.length_squared() > 1 else targetDirection
@@ -32,7 +32,7 @@ func moveTo(targetDirection: Vector2, delta: float) -> void:
 
 func stun () -> void:
 	stunned = true
-	stunDebounce.start(stunDuration)
+	stunTimer.start(stunDuration)
 	
 func bump(bumpDirection: Vector2 = Vector2(1, 1), force: Vector2 = Vector2(2, 2)) -> void:
 	impulseVelocity += bumpDirection * force * 200
@@ -44,5 +44,13 @@ func takeDamage(origin: Vector2, _damages: int = 1) -> void:
 		1 if offset.y > 0 else -1
 	)
 	
+	#hitstop()
 	stun()
 	bump(bumpDirection)
+
+
+func hitstop (duration := 0.1) -> void:
+	Engine.time_scale = 0.05
+	await get_tree().create_timer(duration, false, false, true).timeout
+	Engine.time_scale = 1
+	pass

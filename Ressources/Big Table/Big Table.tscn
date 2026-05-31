@@ -1,0 +1,100 @@
+[gd_scene format=3 uid="uid://8sa2whijcahj"]
+
+[ext_resource type="PackedScene" uid="uid://bs5s2gplqkrk1" path="res://Ressources/Chair/Chair.tscn" id="1_2630j"]
+[ext_resource type="Script" uid="uid://dfenef6bbhdnl" path="res://Ressources/Big Table/big-table.gd" id="1_ngr7s"]
+[ext_resource type="Texture2D" uid="uid://cwue03fkt28mt" path="res://assets/to-sort/tavern/Interior_1st_floor.png" id="1_st7ig"]
+[ext_resource type="PackedScene" uid="uid://dvluw21p1dfv7" path="res://Ressources/Rug/Rug.tscn" id="2_f3jnh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ngr7s"]
+size = Vector2(51, 41)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_st7ig"]
+size = Vector2(50.5, 17)
+
+[node name="BigTable" type="StaticBody2D" unique_id=1671298864]
+script = ExtResource("1_ngr7s")
+
+[node name="Rug" parent="." unique_id=1829232065 instance=ExtResource("2_f3jnh")]
+z_index = -1
+
+[node name="Top Chairs" type="Node2D" parent="." unique_id=1001674184]
+z_index = -1
+position = Vector2(0, -23)
+
+[node name="Left Chair" parent="Top Chairs" unique_id=1067582796 instance=ExtResource("1_2630j")]
+position = Vector2(-15, 8)
+
+[node name="Center Chair" parent="Top Chairs" unique_id=1453264015 instance=ExtResource("1_2630j")]
+position = Vector2(-1, 8)
+
+[node name="Right Chair" parent="Top Chairs" unique_id=1823518430 instance=ExtResource("1_2630j")]
+position = Vector2(15, 7)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=416225447]
+texture = ExtResource("1_st7ig")
+region_enabled = true
+region_rect = Rect2(272, 113.22, 64, 32)
+
+[node name="ClickableZone" type="Area2D" parent="." unique_id=793684212]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ClickableZone" unique_id=1365210748]
+position = Vector2(-0.5, -2.5)
+shape = SubResource("RectangleShape2D_ngr7s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=303180844]
+position = Vector2(-0.75, 3.5)
+shape = SubResource("RectangleShape2D_st7ig")
+
+[node name="Bottom Chairs" type="Node2D" parent="." unique_id=1680984291]
+z_index = -1
+position = Vector2(0, 3)
+
+[node name="Left Chair" parent="Bottom Chairs" unique_id=821061012 instance=ExtResource("1_2630j")]
+position = Vector2(-15, 9)
+
+[node name="Center Chair" parent="Bottom Chairs" unique_id=1246341867 instance=ExtResource("1_2630j")]
+position = Vector2(0, 10)
+
+[node name="Right Chair" parent="Bottom Chairs" unique_id=682165298 instance=ExtResource("1_2630j")]
+position = Vector2(13, 9)
+
+[node name="Menu" type="Panel" parent="." unique_id=910535813]
+visible = false
+offset_left = 28.0
+offset_top = -18.0
+offset_right = 185.0
+offset_bottom = 56.0
+
+[node name="Label" type="Label" parent="Menu" unique_id=1541415333]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "table (grande)"
+
+[node name="Control" type="Control" parent="Menu" unique_id=253330459]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Label" type="Label" parent="Menu/Control" unique_id=1809871704]
+layout_mode = 0
+offset_top = -55.0
+offset_right = 57.0
+offset_bottom = -32.0
+text = "chaises"
+
+[node name="ChairsCountContainer" type="HBoxContainer" parent="Menu/Control" unique_id=1858699850]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -31.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[connection signal="input_event" from="ClickableZone" to="." method="_on_clickable_zone_input_event"]

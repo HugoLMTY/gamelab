@@ -11,9 +11,19 @@ config_version=5
 [application]
 
 config/name="gamelab"
-run/main_scene="uid://6mcw0kuwjtf5"
+run/main_scene="uid://cfmj1m7gyg686"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+PlayerDatas="*uid://d2iv6dyypu6ro"
+TavernDatas="*uid://cyyukrcup1jnr"
+SignalBus="*uid://dwvdoy3qf7o25"
+
+[debug]
+
+gdscript/warnings/standalone_ternary=0
 
 [display]
 

@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://cqwcep8ub5b74"]
 
-[ext_resource type="Script" uid="uid://c8f8imucpw6b4" path="res://Entities/Enemy/enemy_controller.gd" id="1_xugip"]
+[ext_resource type="Script" uid="uid://c8f8imucpw6b4" path="res://Entities/Enemy/enemy.gd" id="1_xugip"]
 [ext_resource type="Texture2D" uid="uid://hycebglxk1im" path="res://assets/characters/dude.png" id="2_xugip"]
+[ext_resource type="Texture2D" uid="uid://crnoird1stwie" path="res://icon.svg" id="3_l2yo7"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xugip"]
 radius = 7.0
@@ -14,11 +15,13 @@ radius = 32.01562
 radius = 12.0
 height = 32.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6b1qy"]
+size = Vector2(95.33334, 112.4)
+
 [node name="Enemy" type="CharacterBody2D" unique_id=1133211625 groups=["enemy"]]
 script = ExtResource("1_xugip")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=747962866 groups=["enemy"]]
-visible = false
 texture = ExtResource("2_xugip")
 region_enabled = true
 region_rect = Rect2(0, 0, 32, 32)
@@ -41,6 +44,18 @@ shape = SubResource("CircleShape2D_xugip")
 position = Vector2(0, 2)
 shape = SubResource("CapsuleShape2D_l2yo7")
 
+[node name="XP Orb" type="Sprite2D" parent="." unique_id=986052852]
+position = Vector2(33, 9)
+scale = Vector2(0.09375001, 0.078125)
+texture = ExtResource("3_l2yo7")
+
+[node name="XP Hitbox" type="Area2D" parent="XP Orb" unique_id=341394913]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="XP Orb/XP Hitbox" unique_id=1347683826]
+position = Vector2(1.1444092e-05, 2.861023e-06)
+shape = SubResource("RectangleShape2D_6b1qy")
+
 [connection signal="body_entered" from="Vision" to="." method="_on_vision_body_entered"]
 [connection signal="timeout" from="Hostility" to="." method="_on_hostility_timeout"]
 [connection signal="body_entered" from="Collision" to="." method="_on_collision_body_entered"]
+[connection signal="body_entered" from="XP Orb/XP Hitbox" to="." method="_on_xp_hitbox_body_entered"]

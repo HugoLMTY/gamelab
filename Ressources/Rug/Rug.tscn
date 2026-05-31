@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://dvluw21p1dfv7"]
+
+[ext_resource type="Texture2D" uid="uid://cwue03fkt28mt" path="res://assets/to-sort/tavern/Interior_1st_floor.png" id="1_inhet"]
+
+[node name="Rug" type="Sprite2D" unique_id=1829232065]
+texture = ExtResource("1_inhet")
+region_enabled = true
+region_rect = Rect2(246, 191, 86, 50)

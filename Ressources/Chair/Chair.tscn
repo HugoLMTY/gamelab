@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://bs5s2gplqkrk1"]
+
+[ext_resource type="Script" uid="uid://c4xw6nl8w7fkb" path="res://Ressources/Chair/chair.gd" id="1_3hstc"]
+[ext_resource type="Texture2D" uid="uid://cwue03fkt28mt" path="res://assets/to-sort/tavern/Interior_1st_floor.png" id="1_vxcm0"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vxcm0"]
+radius = 5.0
+height = 10.0
+
+[sub_resource type="Curve" id="Curve_vqmwa"]
+_data = [Vector2(0, 0.17186171), 0.0, 0.0, 0, 0, Vector2(0.26064909, 0.44643164), 0.0, 0.0, 0, 0, Vector2(0.82758623, 0.6412877), -0.26021585, -0.26021585, 0, 0, Vector2(1, 0.98117864), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="Gradient" id="Gradient_3hstc"]
+offsets = PackedFloat32Array(0.002145946, 1)
+colors = PackedColorArray(0.25590724, 0.4994831, 0.14493951, 1, 1, 1, 1, 1)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vqmwa"]
+radius = 8.0
+
+[node name="Chair" type="StaticBody2D" unique_id=1067582796]
+script = ExtResource("1_3hstc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=254171352]
+position = Vector2(0, 2)
+shape = SubResource("CapsuleShape2D_vxcm0")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1711806062]
+texture = ExtResource("1_vxcm0")
+region_enabled = true
+region_rect = Rect2(32, 96, 16, 16)
+
+[node name="AvailableHighlight" type="Area2D" parent="." unique_id=395494875]
+z_index = 4096
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="AvailableHighlight" unique_id=464006205]
+position = Vector2(0, -12)
+scale = Vector2(1, 2)
+amount = 100
+lifetime = 0.37
+speed_scale = 0.62
+local_coords = true
+emission_shape = 1
+emission_sphere_radius = 7.83
+spread = 82.0
+gravity = Vector2(0, -10)
+angle_min = -247.6
+angle_max = 236.2
+split_scale = true
+scale_curve_x = SubResource("Curve_vqmwa")
+scale_curve_y = SubResource("Curve_vqmwa")
+color = Color(0.039643664, 0.80746925, 0, 1)
+color_ramp = SubResource("Gradient_3hstc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AvailableHighlight" unique_id=331904202]
+position = Vector2(0, -10)
+shape = SubResource("CapsuleShape2D_vqmwa")
+
+[connection signal="input_event" from="AvailableHighlight" to="." method="_on_available_highlight_input_event"]

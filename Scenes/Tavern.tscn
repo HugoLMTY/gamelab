@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://cnbyw0wmo0prj"]
+
+[ext_resource type="PackedScene" uid="uid://bc8pdfmkxsm74" path="res://Shared/Background.tscn" id="1_w0j5r"]
+[ext_resource type="PackedScene" uid="uid://5w2l8vcac4om" path="res://Entities/Player/player.tscn" id="2_8ea0k"]
+[ext_resource type="PackedScene" uid="uid://cyp4pamebbxfd" path="res://Scenes/areas/Exterior.tscn" id="4_rp73c"]
+
+[node name="Taverne" type="Node2D" unique_id=707100460]
+
+[node name="Background" parent="." unique_id=2034842725 instance=ExtResource("1_w0j5r")]
+visible = false
+
+[node name="Player" parent="." unique_id=2104242861 instance=ExtResource("2_8ea0k")]
+
+[node name="Exterior" parent="." unique_id=1689421894 instance=ExtResource("4_rp73c")]

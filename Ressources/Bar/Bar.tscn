@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://vg0k60vnrdx2"]
+
+[ext_resource type="Script" uid="uid://bem63p400nlnx" path="res://Ressources/Bar/bar.gd" id="1_f413l"]
+[ext_resource type="Texture2D" uid="uid://cpgntqroxvouq" path="res://assets/custom/bar/bar-counter.png" id="2_qq1p0"]
+[ext_resource type="Texture2D" uid="uid://cnjlx1n58fdag" path="res://assets/custom/bar/bar-shelves.png" id="3_jjf6g"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qq1p0"]
+size = Vector2(44, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jjf6g"]
+size = Vector2(44, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_okwjh"]
+size = Vector2(159, 85)
+
+[node name="Bar" type="StaticBody2D" unique_id=1800181279]
+script = ExtResource("1_f413l")
+
+[node name="BarCounter" type="Sprite2D" parent="." unique_id=1536814247]
+position = Vector2(0, -19)
+texture = ExtResource("2_qq1p0")
+offset = Vector2(0, -30)
+
+[node name="BarShelves" type="Sprite2D" parent="." unique_id=930024179]
+visible = false
+z_index = 1
+position = Vector2(0, -32)
+texture = ExtResource("3_jjf6g")
+offset = Vector2(0, -20)
+
+[node name="Left Shelf" type="StaticBody2D" parent="BarShelves" unique_id=1626965357]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BarShelves/Left Shelf" unique_id=1744528775]
+visible = false
+position = Vector2(-32, -15)
+shape = SubResource("RectangleShape2D_qq1p0")
+disabled = true
+
+[node name="Right Shelf" type="StaticBody2D" parent="BarShelves" unique_id=1720919795]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="BarShelves/Right Shelf" unique_id=130964045]
+visible = false
+position = Vector2(32, -15)
+shape = SubResource("RectangleShape2D_jjf6g")
+disabled = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=938097227]
+position = Vector2(4.000023, -44.020832)
+scale = Vector2(1.4895833, 1.9167116)
+polygon = PackedVector2Array(50.34965, 21.303848, 50.349648, 9.466171, 41.622368, 6.271593, 41.62238, 12.782309, -46.32168, 12.782309, -46.321697, 6.271593, -55.720284, 9.364853, -55.72028, 21.303848)
+
+[node name="ClickableZone" type="Area2D" parent="." unique_id=1168375104]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ClickableZone" unique_id=353286384]
+position = Vector2(0, -46)
+shape = SubResource("RectangleShape2D_okwjh")
+
+[node name="Menu" type="Panel" parent="." unique_id=1130104217]
+visible = false
+offset_left = 82.0
+offset_top = -42.0
+offset_right = 180.0
+offset_bottom = 91.0
+
+[node name="Label" type="Label" parent="Menu" unique_id=1041524978]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Le bar
+jsp"
+
+[connection signal="input_event" from="ClickableZone" to="." method="_on_clickable_zone_input_event"]

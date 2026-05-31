@@ -1,0 +1,178 @@
+[gd_scene format=3 uid="uid://ddckdsnetbkxo"]
+
+[ext_resource type="Script" uid="uid://mvyvd8lx4ndm" path="res://HUD/hud.gd" id="1_f31rt"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_augcw"]
+font_size = 36
+
+[sub_resource type="LabelSettings" id="LabelSettings_f31rt"]
+font_size = 48
+
+[node name="Hud" type="CanvasLayer" unique_id=2053305518]
+script = ExtResource("1_f31rt")
+
+[node name="PO" type="Label" parent="." unique_id=452633658]
+offset_right = 135.0
+offset_bottom = 67.0
+grow_horizontal = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "10 PO"
+label_settings = SubResource("LabelSettings_augcw")
+horizontal_alignment = 1
+
+[node name="Day" type="Label" parent="." unique_id=1562394224]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -158.0
+offset_bottom = 67.0
+grow_horizontal = 0
+size_flags_vertical = 0
+text = "JOUR 1"
+label_settings = SubResource("LabelSettings_augcw")
+horizontal_alignment = 1
+
+[node name="Name + XP" type="Control" parent="." unique_id=1923257027]
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+grow_horizontal = 2
+size_flags_vertical = 0
+
+[node name="Name" type="Label" parent="Name + XP" unique_id=1619574604]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -264.5
+offset_right = 264.5
+offset_bottom = 67.0
+grow_horizontal = 2
+text = "\"NOM DE LA TAVERNE\""
+label_settings = SubResource("LabelSettings_augcw")
+horizontal_alignment = 1
+
+[node name="XP Bar" type="ProgressBar" parent="Name + XP" unique_id=43186715]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -264.5
+offset_top = 75.0
+offset_right = 264.5
+offset_bottom = 102.0
+grow_horizontal = 2
+value = 24.0
+
+[node name="Actions" type="CenterContainer" parent="." unique_id=1059684088]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -150.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="DashCooldownBar" type="ProgressBar" parent="Actions" unique_id=1807327835]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+value = 48.0
+fill_mode = 3
+
+[node name="Dash" type="Label" parent="Actions/DashCooldownBar" unique_id=1573489952]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -58.0
+offset_top = -8.0
+offset_right = 59.0
+offset_bottom = 59.0
+grow_horizontal = 2
+text = "Dash"
+label_settings = SubResource("LabelSettings_augcw")
+horizontal_alignment = 1
+
+[node name="Inventaire" type="Panel" parent="." unique_id=1956492067]
+visible = false
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -487.0
+offset_top = -303.5
+offset_right = -50.0
+offset_bottom = 303.5
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_horizontal = 8
+
+[node name="Label" type="Label" parent="Inventaire" unique_id=809864264]
+layout_mode = 0
+offset_right = 238.0
+offset_bottom = 67.0
+text = "Inventaire"
+label_settings = SubResource("LabelSettings_f31rt")
+horizontal_alignment = 2
+
+[node name="Button" type="Label" parent="Inventaire" unique_id=203425256]
+layout_mode = 0
+offset_top = 71.0
+offset_right = 238.0
+offset_bottom = 94.0
+text = "Pain: 1"
+
+[node name="Button2" type="Label" parent="Inventaire" unique_id=856458353]
+layout_mode = 0
+offset_top = 98.0
+offset_right = 238.0
+offset_bottom = 121.0
+text = "Biere: 1"
+
+[node name="Button3" type="Label" parent="Inventaire" unique_id=1483079168]
+layout_mode = 0
+offset_top = 125.0
+offset_right = 238.0
+offset_bottom = 148.0
+text = "Cahutés: 1"
+
+[node name="Button4" type="Label" parent="Inventaire" unique_id=172449759]
+layout_mode = 0
+offset_top = 152.0
+offset_right = 238.0
+offset_bottom = 175.0
+text = "Soucaisson: 1"
+
+[node name="Interaction" type="Control" parent="." unique_id=1001819275]
+visible = false
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ProgressBar2" type="ProgressBar" parent="Interaction" unique_id=550569936]
+layout_mode = 0
+offset_left = -179.0
+offset_top = 90.0
+offset_right = 186.0
+offset_bottom = 141.0
+value = 48.0
+
+[node name="Button" type="Button" parent="Interaction" unique_id=1076355506]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 52.0
+offset_right = 137.0
+offset_bottom = 83.0
+text = "E pour nettoyer"

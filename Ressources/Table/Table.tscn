@@ -1,0 +1,110 @@
+[gd_scene format=4 uid="uid://dj1h44lkula"]
+
+[ext_resource type="Script" uid="uid://dddtxq1gso1uh" path="res://Ressources/Table/table.gd" id="1_2obbm"]
+[ext_resource type="Texture2D" uid="uid://cwue03fkt28mt" path="res://assets/to-sort/tavern/Interior_1st_floor.png" id="1_gvnls"]
+[ext_resource type="PackedScene" uid="uid://dvluw21p1dfv7" path="res://Ressources/Rug/Rug.tscn" id="2_hhlmw"]
+[ext_resource type="PackedScene" uid="uid://bs5s2gplqkrk1" path="res://Ressources/Chair/Chair.tscn" id="3_ipjyv"]
+[ext_resource type="TileSet" uid="uid://cnuqpe1ekr63l" path="res://Shared/Tilesets/interior_tile_set.tres" id="4_362ip"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ipjyv"]
+radius = 12.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2obbm"]
+radius = 14.0
+
+[node name="Table" type="StaticBody2D" unique_id=1398428136]
+script = ExtResource("1_2obbm")
+
+[node name="Rug" parent="." unique_id=1829232065 instance=ExtResource("2_hhlmw")]
+z_index = -1
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1854899009]
+visible = false
+tile_map_data = PackedByteArray("AAD+/wAAAgAFAAEAAAD//wAAAgAFAAEAAAAAAAAAAgAFAAEAAAABAAAAAgAFAAEAAAD+////AgAFAAEAAAD/////AgAFAAEAAAAAAP//AgAFAAEAAAABAP//AgAFAAEAAAA=")
+tile_set = ExtResource("4_362ip")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=440000271]
+position = Vector2(0, 8)
+texture = ExtResource("1_gvnls")
+offset = Vector2(0, -8)
+region_enabled = true
+region_rect = Rect2(0, 128, 32, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1681690837]
+position = Vector2(0, 3)
+shape = SubResource("CircleShape2D_ipjyv")
+
+[node name="ClickableZone" type="Area2D" parent="." unique_id=1727356590]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ClickableZone" unique_id=1378547933]
+shape = SubResource("CircleShape2D_2obbm")
+
+[node name="Menu" type="Panel" parent="." unique_id=1109951111]
+visible = false
+z_index = 999
+offset_left = 15.0
+offset_top = -20.0
+offset_right = 152.0
+offset_bottom = 96.0
+
+[node name="Label" type="Label" parent="Menu" unique_id=2142617387]
+layout_mode = 0
+offset_right = 42.0
+offset_bottom = 23.0
+text = "Table"
+
+[node name="oui" type="Button" parent="Menu" unique_id=325293402]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 29.0
+offset_right = 39.0
+offset_bottom = 60.0
+text = "oui"
+
+[node name="non" type="Button" parent="Menu" unique_id=822893337]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 29.0
+offset_right = 87.0
+offset_bottom = 60.0
+text = "non"
+
+[node name="Control" type="Control" parent="Menu" unique_id=1293059250]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Label" type="Label" parent="Menu/Control" unique_id=1484226414]
+layout_mode = 0
+offset_top = -55.0
+offset_right = 57.0
+offset_bottom = -32.0
+text = "chaises"
+
+[node name="ChairsCountContainer" type="HBoxContainer" parent="Menu/Control" unique_id=1956492246]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -31.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Chairs" type="Node2D" parent="." unique_id=224184992]
+z_index = -1
+
+[node name="Left Chair" parent="Chairs" unique_id=1067582796 instance=ExtResource("3_ipjyv")]
+position = Vector2(-19, 2)
+scale = Vector2(-1, 1)
+
+[node name="Right Chair" parent="Chairs" unique_id=1345817839 instance=ExtResource("3_ipjyv")]
+position = Vector2(19, 2)
+
+[connection signal="input_event" from="ClickableZone" to="." method="_on_clickable_zone_input_event"]
+[connection signal="pressed" from="Menu/oui" to="." method="_on_oui_pressed"]
+[connection signal="pressed" from="Menu/non" to="." method="_on_non_pressed"]
