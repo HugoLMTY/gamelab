@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://cqwcep8ub5b74"]
+
+[ext_resource type="Script" uid="uid://c8f8imucpw6b4" path="res://Entities/Enemy/enemy_controller.gd" id="1_xugip"]
+[ext_resource type="Texture2D" uid="uid://hycebglxk1im" path="res://assets/characters/dude.png" id="2_xugip"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xugip"]
+radius = 7.0
+height = 26.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xugip"]
+radius = 32.01562
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l2yo7"]
+radius = 12.0
+height = 32.0
+
+[node name="Enemy" type="CharacterBody2D" unique_id=1133211625 groups=["enemy"]]
+script = ExtResource("1_xugip")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=747962866 groups=["enemy"]]
+visible = false
+texture = ExtResource("2_xugip")
+region_enabled = true
+region_rect = Rect2(0, 0, 32, 32)
+
+[node name="Hitbox" type="CollisionShape2D" parent="." unique_id=215648408 groups=["enemy"]]
+position = Vector2(0, 2)
+shape = SubResource("CapsuleShape2D_xugip")
+
+[node name="Vision" type="Area2D" parent="." unique_id=1420742549]
+visible = false
+
+[node name="VisionHitbox" type="CollisionShape2D" parent="Vision" unique_id=1221107105]
+shape = SubResource("CircleShape2D_xugip")
+
+[node name="Hostility" type="Timer" parent="." unique_id=770683788]
+
+[node name="Collision" type="Area2D" parent="." unique_id=405767211]
+
+[node name="CollisionHitbox" type="CollisionShape2D" parent="Collision" unique_id=913268288]
+position = Vector2(0, 2)
+shape = SubResource("CapsuleShape2D_l2yo7")
+
+[connection signal="body_entered" from="Vision" to="." method="_on_vision_body_entered"]
+[connection signal="timeout" from="Hostility" to="." method="_on_hostility_timeout"]
+[connection signal="body_entered" from="Collision" to="." method="_on_collision_body_entered"]

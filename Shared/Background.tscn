@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://bc8pdfmkxsm74"]
+
+[ext_resource type="Texture2D" uid="uid://byonepcf4st1c" path="res://assets/Clouds 4/4.png" id="1_3qg2o"]
+[ext_resource type="Texture2D" uid="uid://bld2nm2pq0caw" path="res://assets/Clouds 4/3.png" id="2_80e7j"]
+[ext_resource type="Texture2D" uid="uid://dw07weiqy3wu3" path="res://assets/Clouds 4/2.png" id="3_prs24"]
+[ext_resource type="Texture2D" uid="uid://dia02ceh0anad" path="res://assets/Clouds 4/1.png" id="4_3bhh5"]
+
+[node name="Background" type="Node2D" unique_id=2034842725]
+
+[node name="Backgorund" type="Parallax2D" parent="." unique_id=1420412103]
+scroll_scale = Vector2(0.9, 0.9)
+
+[node name="Sprite2D" type="Sprite2D" parent="Backgorund" unique_id=1883226108]
+position = Vector2(-4, -2)
+scale = Vector2(1.4597917, 1.6296297)
+texture = ExtResource("4_3bhh5")
+
+[node name="Star" type="Parallax2D" parent="." unique_id=904343071]
+scroll_scale = Vector2(0.7, 0.7)
+
+[node name="Sprite2D" type="Sprite2D" parent="Star" unique_id=1450396235]
+position = Vector2(-4, -2)
+scale = Vector2(1.4155556, 1.5802469)
+texture = ExtResource("3_prs24")
+
+[node name="Clouds" type="Parallax2D" parent="." unique_id=567224479]
+scroll_scale = Vector2(0.5, 0.5)
+
+[node name="Sprite2D" type="Sprite2D" parent="Clouds" unique_id=1082376795]
+position = Vector2(-4, -2)
+scale = Vector2(1.470851, 1.6419755)
+texture = ExtResource("2_80e7j")
+
+[node name="Clouds2" type="Parallax2D" parent="." unique_id=805041705]
+scroll_scale = Vector2(0.3, 0.3)
+
+[node name="Sprite2D" type="Sprite2D" parent="Clouds2" unique_id=1938783897]
+position = Vector2(-4, -2)
+scale = Vector2(1.470851, 1.6419755)
+texture = ExtResource("1_3qg2o")
