@@ -20,6 +20,7 @@ const clothRegion = Rect2(0, 96, 32, 32)
 
 var chairs: Array[StaticBody2D] = []
 func _ready() -> void:
+	get_node("%ClickableZone").show()
 	chairs = [
 		leftChair,
 		rightChair,

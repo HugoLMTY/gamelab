@@ -1,12 +1,10 @@
 [gd_scene format=3 uid="uid://ddckdsnetbkxo"]
 
 [ext_resource type="Script" uid="uid://mvyvd8lx4ndm" path="res://HUD/hud.gd" id="1_f31rt"]
+[ext_resource type="PackedScene" uid="uid://qi3edfnh7v8w" path="res://HUD/Inventory/Inventory.tscn" id="2_b7ubu"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_augcw"]
 font_size = 36
-
-[sub_resource type="LabelSettings" id="LabelSettings_f31rt"]
-font_size = 48
 
 [node name="Hud" type="CanvasLayer" unique_id=2053305518]
 script = ExtResource("1_f31rt")
@@ -22,6 +20,7 @@ label_settings = SubResource("LabelSettings_augcw")
 horizontal_alignment = 1
 
 [node name="Day" type="Label" parent="." unique_id=1562394224]
+visible = false
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -95,56 +94,8 @@ text = "Dash"
 label_settings = SubResource("LabelSettings_augcw")
 horizontal_alignment = 1
 
-[node name="Inventaire" type="Panel" parent="." unique_id=1956492067]
-visible = false
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -487.0
-offset_top = -303.5
-offset_right = -50.0
-offset_bottom = 303.5
-grow_horizontal = 0
-grow_vertical = 2
-size_flags_horizontal = 8
-
-[node name="Label" type="Label" parent="Inventaire" unique_id=809864264]
-layout_mode = 0
-offset_right = 238.0
-offset_bottom = 67.0
-text = "Inventaire"
-label_settings = SubResource("LabelSettings_f31rt")
-horizontal_alignment = 2
-
-[node name="Button" type="Label" parent="Inventaire" unique_id=203425256]
-layout_mode = 0
-offset_top = 71.0
-offset_right = 238.0
-offset_bottom = 94.0
-text = "Pain: 1"
-
-[node name="Button2" type="Label" parent="Inventaire" unique_id=856458353]
-layout_mode = 0
-offset_top = 98.0
-offset_right = 238.0
-offset_bottom = 121.0
-text = "Biere: 1"
-
-[node name="Button3" type="Label" parent="Inventaire" unique_id=1483079168]
-layout_mode = 0
-offset_top = 125.0
-offset_right = 238.0
-offset_bottom = 148.0
-text = "Cahutés: 1"
-
-[node name="Button4" type="Label" parent="Inventaire" unique_id=172449759]
-layout_mode = 0
-offset_top = 152.0
-offset_right = 238.0
-offset_bottom = 175.0
-text = "Soucaisson: 1"
+[node name="Inventory" parent="." unique_id=2047271114 instance=ExtResource("2_b7ubu")]
+unique_name_in_owner = true
 
 [node name="Interaction" type="Control" parent="." unique_id=1001819275]
 visible = false

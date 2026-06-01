@@ -31,7 +31,6 @@ size = Vector2(11, 2)
 [node name="Player" type="CharacterBody2D" unique_id=2104242861 groups=["player"]]
 y_sort_enabled = true
 material = SubResource("ShaderMaterial_5c2io")
-floor_stop_on_slope = false
 script = ExtResource("1_3uyv8")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1943035241]

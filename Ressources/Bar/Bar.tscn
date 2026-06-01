@@ -50,6 +50,7 @@ scale = Vector2(1.4895833, 1.9167116)
 polygon = PackedVector2Array(50.34965, 21.303848, 50.349648, 9.466171, 41.622368, 6.271593, 41.62238, 12.782309, -46.32168, 12.782309, -46.321697, 6.271593, -55.720284, 9.364853, -55.72028, 21.303848)
 
 [node name="ClickableZone" type="Area2D" parent="." unique_id=1168375104]
+unique_name_in_owner = true
 visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ClickableZone" unique_id=353286384]

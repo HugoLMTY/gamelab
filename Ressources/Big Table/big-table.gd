@@ -21,6 +21,7 @@ var showMenu := false
 
 var chairs: Array[StaticBody2D] = []
 func _ready() -> void:
+	get_node("%ClickableZone").show()
 	chairs = [
 		topLeftChair,
 		topCenterChair,

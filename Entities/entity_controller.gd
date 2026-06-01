@@ -14,7 +14,7 @@ var stunned := false
 var stunDuration := 0.5
 var stunTimer := Timer.new()
 
-func _ready() -> void:
+func _ready() -> void:	
 	add_child(stunTimer)
 	stunTimer.timeout.connect(func () -> void: stunned = false)
 

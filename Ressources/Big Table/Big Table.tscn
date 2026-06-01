@@ -15,10 +15,11 @@ size = Vector2(50.5, 17)
 script = ExtResource("1_ngr7s")
 
 [node name="Rug" parent="." unique_id=1829232065 instance=ExtResource("2_f3jnh")]
+visible = true
 z_index = -1
 
 [node name="Top Chairs" type="Node2D" parent="." unique_id=1001674184]
-z_index = -1
+y_sort_enabled = true
 position = Vector2(0, -23)
 
 [node name="Left Chair" parent="Top Chairs" unique_id=1067582796 instance=ExtResource("1_2630j")]
@@ -36,6 +37,8 @@ region_enabled = true
 region_rect = Rect2(272, 113.22, 64, 32)
 
 [node name="ClickableZone" type="Area2D" parent="." unique_id=793684212]
+unique_name_in_owner = true
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ClickableZone" unique_id=1365210748]
 position = Vector2(-0.5, -2.5)

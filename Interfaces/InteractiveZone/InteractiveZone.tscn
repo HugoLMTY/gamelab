@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://br0m515kt4ia0"]
+
+[ext_resource type="Script" uid="uid://d2po4rvhgl8wi" path="res://Interfaces/InteractiveZone/interactive_zone.gd" id="1_8xttx"]
+[ext_resource type="PackedScene" uid="uid://bvnn82ibn82em" path="res://Interfaces/InteractionMenu/InteractionMenu.tscn" id="2_4aso4"]
+
+[node name="InteractiveZone" type="Area2D" unique_id=307570476]
+script = ExtResource("1_8xttx")
+
+[node name="InteractionMenu" parent="." unique_id=52142110 instance=ExtResource("2_4aso4")]
+unique_name_in_owner = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

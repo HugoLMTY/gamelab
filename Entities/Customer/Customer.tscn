@@ -49,7 +49,13 @@ height = 14.0
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_38jce"]
 
 [node name="Customer" type="CharacterBody2D" unique_id=2072254662]
+y_sort_enabled = true
+floor_stop_on_slope = false
+floor_block_on_wall = false
 script = ExtResource("1_n7d7n")
+speed = null
+acceleration = null
+friction = null
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1794329868]
 position = Vector2(0, 15)
@@ -66,6 +72,9 @@ position = Vector2(0, 11)
 shape = SubResource("CapsuleShape2D_n7d7n")
 
 [node name="ClickableZone" type="Area2D" parent="." unique_id=1876124958]
+unique_name_in_owner = true
+visible = false
+z_index = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ClickableZone" unique_id=147097238]
 position = Vector2(0, 3)
@@ -92,9 +101,27 @@ offset_right = 29.0
 offset_bottom = 51.0
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1354347236]
+path_postprocessing = 1
+avoidance_enabled = true
 radius = 182.54
-avoidance_layers = 3
-avoidance_mask = 3
 debug_enabled = true
+
+[node name="Consumation Stuff" type="Control" parent="." unique_id=2080708584]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ConsumationTimer" type="Timer" parent="Consumation Stuff" unique_id=527720753]
+unique_name_in_owner = true
+wait_time = 3.0
+
+[node name="ConsumationProgressBar" type="ProgressBar" parent="Consumation Stuff" unique_id=955605203]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = -25.0
+offset_top = -41.0
+offset_right = 42.0
+offset_bottom = -14.0
 
 [connection signal="input_event" from="ClickableZone" to="." method="_on_clickable_zone_input_event"]

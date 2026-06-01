@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://bvnn82ibn82em"]
+
+[node name="InteractionMenu" type="Panel" unique_id=52142110]
+
+[node name="Button" type="Button" parent="." unique_id=1339900695]
+z_index = 999
+layout_mode = 0
+offset_right = 30.0
+offset_bottom = 31.0
+text = "e"

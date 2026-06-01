@@ -2,14 +2,19 @@
 
 [ext_resource type="Script" uid="uid://olbkkddnqb8x" path="res://Ressources/Barrel/barrel.gd" id="1_05pjv"]
 [ext_resource type="Texture2D" uid="uid://cwue03fkt28mt" path="res://assets/to-sort/tavern/Interior_1st_floor.png" id="2_3660c"]
+[ext_resource type="PackedScene" uid="uid://br0m515kt4ia0" path="res://Interfaces/InteractiveZone/InteractiveZone.tscn" id="3_3660c"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_05pjv"]
+radius = 10.069931
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3660c"]
 radius = 15.0
 height = 40.0
 
-[node name="Bar" type="StaticBody2D" unique_id=1800181279]
+[sub_resource type="CircleShape2D" id="CircleShape2D_3660c"]
+radius = 17.0
+
+[node name="Barrel" type="StaticBody2D" unique_id=1800181279]
 script = ExtResource("1_05pjv")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=691617167]
@@ -18,11 +23,13 @@ region_enabled = true
 region_rect = Rect2(64, 96, 32, 48)
 
 [node name="CollisionPolygon2D" type="CollisionShape2D" parent="." unique_id=341339757]
-position = Vector2(2.3841858e-07, -2)
+position = Vector2(0, 4)
 scale = Vector2(1.4895833, 1.3238635)
 shape = SubResource("CapsuleShape2D_05pjv")
 
 [node name="ClickableZone" type="Area2D" parent="." unique_id=1168375104]
+unique_name_in_owner = true
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ClickableZone" unique_id=353286384]
 position = Vector2(0, -2)
@@ -41,4 +48,13 @@ offset_right = 40.0
 offset_bottom = 23.0
 text = "BIÈRE"
 
+[node name="InteractiveZone" parent="." unique_id=1311459310 node_paths=PackedStringArray("collisionBox") instance=ExtResource("3_3660c")]
+collisionBox = NodePath("CollisionShape2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractiveZone" unique_id=1889836009]
+position = Vector2(0, 10)
+shape = SubResource("CircleShape2D_3660c")
+debug_color = Color(0.40237218, 0.97490364, 3.85046e-07, 0.41960785)
+
 [connection signal="input_event" from="ClickableZone" to="." method="_on_clickable_zone_input_event"]
+[connection signal="interacted" from="InteractiveZone" to="." method="_on_interactive_zone_interacted"]

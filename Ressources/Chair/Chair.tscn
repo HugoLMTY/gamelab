@@ -12,11 +12,12 @@ _data = [Vector2(0, 0.17186171), 0.0, 0.0, 0, 0, Vector2(0.26064909, 0.44643164)
 point_count = 4
 
 [sub_resource type="Gradient" id="Gradient_3hstc"]
-offsets = PackedFloat32Array(0.002145946, 1)
-colors = PackedColorArray(0.25590724, 0.4994831, 0.14493951, 1, 1, 1, 1, 1)
+offsets = PackedFloat32Array(0.002145946, 0.7372881, 0.99878937)
+colors = PackedColorArray(0.25590724, 0.4994831, 0.14493951, 1, 1, 1, 1, 1, 1, 1, 1, 0)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vqmwa"]
 radius = 8.0
+height = 38.0
 
 [node name="Chair" type="StaticBody2D" unique_id=1067582796]
 script = ExtResource("1_3hstc")
@@ -30,8 +31,10 @@ texture = ExtResource("1_vxcm0")
 region_enabled = true
 region_rect = Rect2(32, 96, 16, 16)
 
-[node name="AvailableHighlight" type="Area2D" parent="." unique_id=395494875]
+[node name="AvailableHighlight" type="Area2D" parent="." unique_id=395494875 groups=["available-chairs"]]
+visible = false
 z_index = 4096
+y_sort_enabled = true
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="AvailableHighlight" unique_id=464006205]
 position = Vector2(0, -12)
@@ -44,8 +47,6 @@ emission_shape = 1
 emission_sphere_radius = 7.83
 spread = 82.0
 gravity = Vector2(0, -10)
-angle_min = -247.6
-angle_max = 236.2
 split_scale = true
 scale_curve_x = SubResource("Curve_vqmwa")
 scale_curve_y = SubResource("Curve_vqmwa")
@@ -53,7 +54,8 @@ color = Color(0.039643664, 0.80746925, 0, 1)
 color_ramp = SubResource("Gradient_3hstc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AvailableHighlight" unique_id=331904202]
-position = Vector2(0, -10)
+position = Vector2(0, -9)
 shape = SubResource("CapsuleShape2D_vqmwa")
 
+[connection signal="body_entered" from="AvailableHighlight" to="." method="_on_available_highlight_body_entered"]
 [connection signal="input_event" from="AvailableHighlight" to="." method="_on_available_highlight_input_event"]
