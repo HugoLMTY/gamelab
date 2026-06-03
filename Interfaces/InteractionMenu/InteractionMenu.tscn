@@ -1,6 +1,9 @@
 [gd_scene format=3 uid="uid://bvnn82ibn82em"]
 
+[ext_resource type="Script" uid="uid://bgi4olm2pt0ay" path="res://Interfaces/InteractionMenu/interaction_menu.gd" id="1_a5mxj"]
+
 [node name="InteractionMenu" type="Panel" unique_id=52142110]
+script = ExtResource("1_a5mxj")
 
 [node name="Button" type="Button" parent="." unique_id=1339900695]
 z_index = 999
@@ -8,3 +11,5 @@ layout_mode = 0
 offset_right = 30.0
 offset_bottom = 31.0
 text = "e"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

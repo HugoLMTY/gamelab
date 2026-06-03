@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://ddpd4wao4o4ha"]
+
+[ext_resource type="Script" uid="uid://ef8i12tsb32q" path="res://Ressources/exit_area.gd" id="1_7mfxd"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_375fq"]
+radius = 15.0
+height = 48.0
+
+[sub_resource type="Gradient" id="Gradient_k5i6f"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[node name="ExitArea" type="Area2D" unique_id=2012506830]
+script = ExtResource("1_7mfxd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=897445643]
+shape = SubResource("CapsuleShape2D_375fq")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=1961469935 groups=["exit-areas"]]
+amount = 18
+emission_shape = 2
+emission_sphere_radius = 20.78
+gravity = Vector2(0, -10)
+color_ramp = SubResource("Gradient_k5i6f")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

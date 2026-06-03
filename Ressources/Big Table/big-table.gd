@@ -36,17 +36,16 @@ func _ready() -> void:
 	)
 
 func _draw() -> void:
-	if showMenu:
-		menu.show()
-	else:
-		menu.hide()
-
 	super.drawChairs(chairs, chairsCount, maxChairs)
 
 func _on_clickable_zone_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
-	if event is InputEventMouseButton and event.pressed:
-		showMenu = !showMenu
-		queue_redraw()
+	if !(event is InputEventMouseButton and event.pressed):
+		return
+	
+	if menu.visible:
+		menu.hide()
+	else:
+		menu.show()
 
 func _on_chairs_pressed(numbers: int) -> void:
 	chairsCount = numbers

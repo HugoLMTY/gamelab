@@ -19,9 +19,16 @@ func _process(delta: float) -> void:
 func dash() -> void:
 	PlayerDatas.cooldowns.dash = PlayerDatas.dashCooldown
 
-func add_to_inventory(item: String) -> void:
+func add_to_inventory(item: String, quantity := 1) -> void:
 	if inventory[item]:
-		inventory[item] += 1
+		inventory[item] += quantity
 	else:
-		inventory[item] = 1
+		inventory[item] = quantity
 	emit_signal("inventoryUpdated")
+
+func take_from_inventory(item: String, quantity := 1) -> bool:
+	var hasEnoughItem = inventory[item] >= quantity
+	if hasEnoughItem:
+		inventory[item] -= quantity
+		emit_signal("inventoryUpdated")
+	return hasEnoughItem

@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cbx87hl4v36bh" path="res://Entities/Customer/customer.gd" id="1_n7d7n"]
 [ext_resource type="Texture2D" uid="uid://iyxw5klh01jw" path="res://assets/characters/drinkers/drinker-4.png" id="2_n7d7n"]
+[ext_resource type="PackedScene" uid="uid://br0m515kt4ia0" path="res://Interfaces/InteractiveZone/InteractiveZone.tscn" id="3_38jce"]
 
 [sub_resource type="Animation" id="Animation_3hstc"]
 length = 0.001
@@ -48,14 +49,15 @@ height = 14.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_38jce"]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_px6ki"]
+radius = 16.0
+height = 40.0
+
 [node name="Customer" type="CharacterBody2D" unique_id=2072254662]
 y_sort_enabled = true
 floor_stop_on_slope = false
 floor_block_on_wall = false
 script = ExtResource("1_n7d7n")
-speed = null
-acceleration = null
-friction = null
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1794329868]
 position = Vector2(0, 15)
@@ -65,6 +67,7 @@ region_enabled = true
 region_rect = Rect2(0, 0, 23, 34)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D" unique_id=1429206848]
+unique_name_in_owner = true
 libraries/ = SubResource("AnimationLibrary_n7d7n")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=771798266]
@@ -80,26 +83,6 @@ z_index = 2
 position = Vector2(0, 3)
 shape = SubResource("CapsuleShape2D_38jce")
 
-[node name="Menu" type="Panel" parent="." unique_id=1917736641]
-visible = false
-offset_left = 11.0
-offset_top = -11.0
-offset_right = 170.0
-offset_bottom = 73.0
-
-[node name="Label" type="Label" parent="Menu" unique_id=271767785]
-layout_mode = 0
-offset_right = 92.0
-offset_bottom = 23.0
-text = "quel bogoss"
-
-[node name="BtnContainer" type="HBoxContainer" parent="Menu" unique_id=634485686]
-layout_mode = 0
-offset_left = -11.0
-offset_top = 11.0
-offset_right = 29.0
-offset_bottom = 51.0
-
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1354347236]
 path_postprocessing = 1
 avoidance_enabled = true
@@ -109,8 +92,10 @@ debug_enabled = true
 [node name="Consumation Stuff" type="Control" parent="." unique_id=2080708584]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -50.0
+offset_top = -46.0
+offset_right = 49.0
+offset_bottom = -19.0
 
 [node name="ConsumationTimer" type="Timer" parent="Consumation Stuff" unique_id=527720753]
 unique_name_in_owner = true
@@ -118,10 +103,56 @@ wait_time = 3.0
 
 [node name="ConsumationProgressBar" type="ProgressBar" parent="Consumation Stuff" unique_id=955605203]
 unique_name_in_owner = true
+z_index = 99
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -33.5
+offset_top = -27.0
+offset_right = 33.5
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Order stuff" type="Control" parent="." unique_id=2028616770]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="OrderMenu" type="Panel" parent="Order stuff" unique_id=1917736641]
+unique_name_in_owner = true
+z_index = 999
 layout_mode = 0
-offset_left = -25.0
-offset_top = -41.0
-offset_right = 42.0
-offset_bottom = -14.0
+offset_left = 20.0
+offset_top = -11.0
+offset_right = 170.0
+offset_bottom = 78.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Order stuff/OrderMenu" unique_id=1715986113]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Order stuff/OrderMenu/VBoxContainer" unique_id=271767785]
+layout_mode = 2
+text = "quel bogoss affamé"
+
+[node name="OrderContainer" type="VBoxContainer" parent="Order stuff/OrderMenu/VBoxContainer" unique_id=139807514]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="InteractiveZone" parent="." unique_id=307570476 node_paths=PackedStringArray("collisionBox") instance=ExtResource("3_38jce")]
+collisionBox = NodePath("CollisionShape2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractiveZone" unique_id=1713966790]
+position = Vector2(0, 2)
+shape = SubResource("CapsuleShape2D_px6ki")
 
 [connection signal="input_event" from="ClickableZone" to="." method="_on_clickable_zone_input_event"]
+[connection signal="interacted" from="InteractiveZone" to="." method="_on_interactive_zone_interacted"]

@@ -11,3 +11,4 @@ unique_name_in_owner = true
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="interacted" from="InteractionMenu" to="." method="_on_interaction_menu_interacted"]
